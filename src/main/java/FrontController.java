@@ -1,8 +1,10 @@
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /*  ServletクラスとそれにアクセスするURLパターンを定義する。 
 http://localhost:8080/ExerciseServlet/*.actionが呼ばれたら、FrontControllerクラスの 
@@ -17,7 +19,7 @@ public class FrontController extends HttpServlet {
             String name = path.replace(".a", "A").replace('/', '.');
             Action action = (Action) Class.forName(name).getDeclaredConstructor().newInstance();
             String url = action.execute(request, response);
-            /* 返却されたurl(JSP)にforwardして処理をディスパッチする */
+            // 返却されたurl(JSP)にforwardして処理をディスパッチする 
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,3 +30,4 @@ public class FrontController extends HttpServlet {
         doPost(request, response);
     }
 }
+// GitHub練習中
