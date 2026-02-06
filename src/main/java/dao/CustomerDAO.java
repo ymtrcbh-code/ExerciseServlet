@@ -17,7 +17,7 @@ public class CustomerDAO extends DAO {
                 /* SQL文の準備 */ 
   PreparedStatement st; 
   st=con.prepareStatement( 
-  "select * from customer where binary login_id=? and binary password=?"); 
+           "select * from customer where binary login_id=? and binary password=?"); 
   st.setString(1, loginId); 
   st.setString(2, password); 
                 /* SQL文の実行 */ 
@@ -32,13 +32,13 @@ public class CustomerDAO extends DAO {
    customer.setPassword(rs.getString("password")); 
   } 
                 /* DBとの接続クローズ処理 */ 
-        rs.close(); 
+  rs.close(); 
   st.close(); 
   con.close(); 
   return customer; 
  } 
  
- public boolean serch(String loginId) throws Exseption {
+ public boolean search(String loginId) throws Exception {
      Connection con=getConnection();
 
      PreparedStatement st;

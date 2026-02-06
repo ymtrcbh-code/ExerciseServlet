@@ -7,9 +7,9 @@ public class RegistAction implements Action {
     public String execute(
       HttpServletRequest request,HttpServletResponse response) throws Exception { 
             String loginId = request.getParameter("loginId");
-            String password = request.getParameter(password);
+            String password = request.getParameter("password");
             CustomerDAO dao = new CustomerDAO();
-            boolean exists =dao.search(loginId);
+            boolean exists = dao.search(loginId);
             
             if (exists) {
                 return "regist-error.jsp";
